@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DulcesPetalosApp</string>
+    <string name="flower_img_description">Imágen de una flor</string>
+    <string name="price_string">%s €</string>
+    <string name="watering_per_week_single_string">Riego cada semana: %s vez</string>
+    <string name="watering_per_week_string">Riego cada semana: %s veces</string>
+    <string name="fertilizer_type_string">Tipo de fertilizante: %s</string>
+    <string name="height_in_cm_string">Altura: %s cm</string>
+    <string name="error_message_string">Ha ocurrido un error!</string>
+    <string name="search_by_name_string">Buscar por nombre</string>
+</resources>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.example.dulcespetalosapp.models.ProductModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.detail.DetailFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/detailPhotoImageView"
+                imageUrl="@{model.imgUrl}"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:contentDescription="@string/flower_img_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <TextView
+                android:id="@+id/detailNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@{model.name}"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detailPhotoImageView" />
+
+            <TextView
+                android:id="@+id/detailBinomialNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{model.binomialName}"
+                android:textColor="#000000"
+                android:textStyle="italic"
+                app:layout_constraintStart_toStartOf="@+id/detailNameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/detailNameTextView" />
+
+            <TextView
+                android:id="@+id/detailPriceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@{String.format(@string/price_string, String.valueOf(model.price))}"
+                android:textColor="#5B0909"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/detailNameTextView" />
+
+            <TextView
+                android:id="@+id/detailWateringPerWeekTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@{model.wateringsPerWeek > 1 ? String.format(@string/watering_per_week_string, String.valueOf(model.wateringsPerWeek)) : String.format(@string/watering_per_week_single_string, String.valueOf(model.wateringsPerWeek))}"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/detailBinomialNameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/detailBinomialNameTextView" />
+
+            <TextView
+                android:id="@+id/detailFertilizerTypeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{String.format(@string/fertilizer_type_string, model.fertilizerType)}"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/detailWateringPerWeekTextView"
+                app:layout_constraintTop_toBottomOf="@+id/detailWateringPerWeekTextView" />
+
+            <TextView
+                android:id="@+id/detailHeightInCmTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{String.format(@string/height_in_cm_string, String.valueOf(model.heightInCm))}"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/detailFertilizerTypeTextView"
+                app:layout_constraintTop_toBottomOf="@+id/detailFertilizerTypeTextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error_message_string"
+            android:textColor="#660606"
+            android:textSize="18sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
